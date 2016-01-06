@@ -12,7 +12,7 @@ This has been tested on Mac OS 10.11.2 with a Teensy 3.2
  * Install homebrew if you don't have it: http://brew.sh/
  * Cmake. To install run ```brew install cmake```
  * XCode (perhaps not needed, but it typically installs a variety of useful tools)
- * Arduino 1.0.6: http://arduino.cc/download.php?f=/arduino-1.0.6-macosx.zip
+ * Arduino 1.6.7: https://www.arduino.cc/download_handler.php?f=/arduino-1.6.7-macosx.zip
  * Teensyduino 1.27: https://www.pjrc.com/teensy/td_127/teensyduino.dmg
  * TyQT (https://github.com/Koromix/ty) 0.7.0 prerelease: https://www.dropbox.com/s/du62rjurw1mdg75/TyQt-0.6.3-250-g0a71b13-osx.dmg?dl=0 discussed here: https://forum.pjrc.com/threads/27825-Teensy-Qt?p=90594&viewfull=1%23post90594
 
