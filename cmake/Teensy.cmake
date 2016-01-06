@@ -21,7 +21,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-set(TY_EXECUTABLE "/usr/bin/tyc" CACHE FILEPATH "Path to the 'ty' executable that can upload programs to the Teensy")
+set(TY_EXECUTABLE "/Applications/TyQt.app/Contents/MacOS/tyc" CACHE FILEPATH "Path to the 'ty' executable that can upload programs to the Teensy")
 
 set(TEENSY_C_CORE_FILES
     ${TEENSY_ROOT}/math_helper.c

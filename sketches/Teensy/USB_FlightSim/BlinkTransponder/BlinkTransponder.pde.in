@@ -1,8 +1,0 @@
-#include "Arduino.h"
-void setup();
-void loop();
-
-// Missing declarations from the .pde file.
-void updateLED(long value);
-
-#include "@SOURCE_PATH@"

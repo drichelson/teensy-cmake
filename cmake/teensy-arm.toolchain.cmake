@@ -22,12 +22,14 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 set(TRIPLE "arm-none-eabi")
-set(TOOLCHAIN_ROOT "/usr")
-set(TEENSY_CORES_ROOT "/usr/share/arduino/hardware/teensy/cores" CACHE PATH "Path to the Teensy 'cores' repository")
+
+set(ARDUINO_ROOT "/Applications/Arduino.app" CACHE PATH "Path to the Arduino application")
+set(TEENSY_CORES_ROOT "${ARDUINO_ROOT}/Contents/Resources/Java/hardware/teensy/cores" CACHE PATH "Path to the Teensy 'cores' repository")
 set(TEENSY_ROOT "${TEENSY_CORES_ROOT}/teensy3")
-set(ARDUINO_LIB_ROOT "/usr/share/arduino/libraries" CACHE PATH "Path to the Arduino library directory")
+set(TOOLCHAIN_ROOT ${ARDUINO_ROOT}/Contents/Resources/Java/hardware/tools/arm)
+set(ARDUINO_LIB_ROOT "${ARDUINO_ROOT}/Contents/Resources/Java/libraries" CACHE PATH "Path to the Arduino library directory")
 set(ARDUINO_VERSION "106" CACHE STRING "Version of the Arduino SDK")
-set(TEENSYDUINO_VERSION "120" CACHE STRING "Version of the Teensyduino SDK")
+set(TEENSYDUINO_VERSION "127" CACHE STRING "Version of the Teensyduino SDK")
 #set(TEENSY_MODEL "MK20DX256" CACHE STRING "Model of the Teensy MCU")
 set(TEENSY_MODEL "MK20DX256") # XXX Add Teensy 3.0 support.
 

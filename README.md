@@ -1,36 +1,26 @@
-# Introduction
-
+# teensy-cmake
+Mac only! help make this work on other platforms.
 teensy-cmake is a template for Teensy projects that uses CMake to build your sketches.
-This lets you develop for Teensy using your favorite text editor and terminal.
-It can easily accommodate executables built from several source and header files.
+It is forked from https://github.com/xya/teensy-cmake and is intended to be simpler and also it works on Mac OS.
+This lets you develop for Teensy using your favorite text editor and terminal. 
+I use Clion: https://www.jetbrains.com/clion/ which can easily import CMake projects. 
+CLion is a great IDE and even has a Serial console plugin available so you never need to open the Arduino IDE again.
 
-Teensy sketches from Teensyduino have been included to get started quickly.
+This has been tested on Mac OS 10.11.2 with a Teensy 3.2
+# Requirements- install newer/older versions at your peril!
 
-It has currently only been tested on Linux with a Teensy 3.1.
+ * Install homebrew if you don't have it: http://brew.sh/
+ * Cmake. To install run ```brew install cmake```
+ * XCode (perhaps not needed, but it typically installs a variety of useful tools)
+ * Arduino 1.0.6: http://arduino.cc/download.php?f=/arduino-1.0.6-macosx.zip
+ * Teensyduino 1.27: https://www.pjrc.com/teensy/td_127/teensyduino.dmg
+ * TyQT (https://github.com/Koromix/ty) 0.7.0 prerelease: https://www.dropbox.com/s/du62rjurw1mdg75/TyQt-0.6.3-250-g0a71b13-osx.dmg?dl=0 discussed here: https://forum.pjrc.com/threads/27825-Teensy-Qt?p=90594&viewfull=1%23post90594
 
-# Requirements
-
-* CMake
-* Git
-* A cross-compiler toolchain for ARM ('arm-none-eabi')
-* Teensyduino for sketches that use libraries (e.g. Bounce)
-
-# Setup
-
-Clone this repository from GitHub:
-
-```bash
-git clone https://github.com/xya/teensy-cmake.git
-cd teensy-cmake
-```
-
-If you don't have Teensystudio installed, clone the Teensy 'cores' repository from GitHub:
-
-```bash
-git clone https://github.com/PaulStoffregen/cores.git
-```
+Once all the above items have been installed it is probably a good idea to test out your Teensy with the Arduino app. Try uploading an example sketch.
 
 Create a build directory:
+
+# Building
 
 ```bash
 mkdir build
@@ -42,38 +32,14 @@ Run CMake:
 cmake ..
 ```
 
-This last step might fail with errors such as 'compiler not found'. In this case, run the CMake GUI:
-
+Build with:
 ```bash
-cmake-gui ..
-```
-
-Make sure that 'TEENSY_CORES_ROOT' points to the 'cores' directory from Arduino (e.g. /usr/share/arduino/hardware/teensy/cores), or to the directory where you cloned the 'cores' directory.
-
-To build sketches that use libraries, make sure that 'ARDUINO_LIB_ROOT' points to the Arduino library directory (e.g. /usr/share/arduino/libraries).
-
-Finally, build all example sketches with:
-```bash
-make -j
+make -j main
 ```
 
 # Flashing sketches to the Teensy
-
-TODO: This is not yet supported.
-
-# Creating new single-file sketches
-
-To create new sketches, simply create a new directory inside 'sketches' (e.g. sketches/MySketch) that contains the sketch file (e.g. sketches/MySketch/MySketch.ino). It will be automatically be picked up the next time you run CMake. The sketch can be a C++ file too, in which case you need to import 'Arduino.h' and declare the 'setup'/'loop' functions.
-
-# Creating new multi-file C/C++ projects
-
-You can create new multi-file projects in the same way than single-file sketches. The only difference is you need to create a 'CMakeLists.txt' file inside the project folder with contents like:
-
-```
-add_teensy_executable(MyProject
-    MyProject.cpp
-    MyProject_sensors.cpp
-    MyProject_interrupts.cpp)
+```bash
+make -j main_Upload
 ```
 
 # Custom configuration
@@ -83,7 +49,7 @@ For some sketches, the Teensy needs to run in a different 'USB mode'. You can se
 ```
 set(TEENSY_USB_MODE MIDI)
 
-add_sketch() # or add_teensy_executable(...)
+add_teensy_executable(...)
 ```
 
 You can set the 'default' mode in the CMake GUI ('TEENSY_USB_MODE' variable).
@@ -95,14 +61,5 @@ Here is a simple example of how to import a library:
 ```
 import_arduino_library(Bounce)
 
-add_sketch() # or add_teensy_executable(...)
+add_teensy_executable(...)
 ```
-
-Make sure that the 'ARDUINO_LIB_ROOT' variable is set up correctly in CMake.
-
-# Creating bare C/C++ projects
-
-With 'bare' projects you have to define 'main' and include headers yourself.
-
-TODO: This is not yet supported.
-
