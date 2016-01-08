@@ -32,5 +32,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 include(Teensy)
+import_arduino_library(FastLED)
+import_arduino_library(OctoWS2811)
 
 add_teensy_executable(main main.cpp)
